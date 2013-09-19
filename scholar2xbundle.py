@@ -142,7 +142,7 @@ class ScholarCourse(object):
         except Exception as err:
             print "      ERROR reading %s: %s" % (fn, err)
             return
-        nav = vcontents.find('.//p[@class="sc_nav"]') # v.find('.//p[@class="sc_nav"]')
+        nav = vcontents.find('.//p[@class="sc_nav"]')
         html = etree.SubElement(vert,'html')
         html.set('display_name',vert.get('display_name','Page'))
         for p in nav:
