@@ -407,10 +407,8 @@ class XBundle(object):
             elem.attrib.pop('url_name')
             if 'url_name_orig' in elem.attrib and self.keep_urls:
                 elem.attrib.pop('url_name_orig')
-			
-			if un.__len__() > 182:                
-                un = un[:182-un.__len__()]
-				
+            if un.__len__() > 182:                
+                un = un[:182-un.__len__()]				
             edir = self.mkdir(self.dir / x.tag)
             open(edir/un + '.xml','w').write(self.pp_xml(x))
             return un

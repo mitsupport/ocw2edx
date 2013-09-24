@@ -112,8 +112,8 @@ class ScholarCourse(object):
         html = etree.XML('<html><a href="%s">%s</a></html>' % (newpath, dn))
         print "      html link: %s = %s" % (dn, newpath)
         vert.append(html)
-
-	def add_py_link_to_vert(self, pyfn, text, vert):
+    
+    def add_py_link_to_vert(self, pyfn, text, vert):
         '''
         Add <html> with link to PY file to vertical
         '''
@@ -122,7 +122,6 @@ class ScholarCourse(object):
         html = etree.XML('<html><a href="%s">%s</a></html>' % (newpath, dn))
         print "      html link: %s = %s" % (dn, newpath)
         vert.append(html)
-        
     def add_txt_link_to_vert(self, txtfn, text, vert):
         '''
         Add <html> with link to txt file to vertical
@@ -153,11 +152,9 @@ class ScholarCourse(object):
         if vfn.endswith('.pdf'):
             self.add_pdf_link_to_vert(vfn, vxml.text, vert)
             return
-			
-		if vfn.endswith('.py'):
+        if vfn.endswith('.py'):
             self.add_py_link_to_vert(vfn, vxml.text, vert)
             return
-        
         if vfn.endswith('.txt'):
             self.add_txt_link_to_vert(vfn, vxml.text, vert)
             return
