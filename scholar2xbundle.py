@@ -113,6 +113,25 @@ class ScholarCourse(object):
         print "      html link: %s = %s" % (dn, newpath)
         vert.append(html)
 
+	def add_py_link_to_vert(self, pyfn, text, vert):
+        '''
+        Add <html> with link to PY file to vertical
+        '''
+        newpath = self.fix_static('../' + pyfn)
+        dn = text.strip()
+        html = etree.XML('<html><a href="%s">%s</a></html>' % (newpath, dn))
+        print "      html link: %s = %s" % (dn, newpath)
+        vert.append(html)
+        
+    def add_txt_link_to_vert(self, txtfn, text, vert):
+        '''
+        Add <html> with link to txt file to vertical
+        '''
+        newpath = self.fix_static('../' + txtfn)
+        dn = text.strip()
+        html = etree.XML('<html><a href="%s">%s</a></html>' % (newpath, dn))
+        print "      html link: %s = %s" % (dn, newpath)
+        vert.append(html)
 
     def add_contents_to_vert(self, vxml, vert):
         '''
@@ -133,6 +152,14 @@ class ScholarCourse(object):
         vfn = re.sub('[\./]+/contents/','contents/', href)
         if vfn.endswith('.pdf'):
             self.add_pdf_link_to_vert(vfn, vxml.text, vert)
+            return
+			
+		if vfn.endswith('.py'):
+            self.add_py_link_to_vert(vfn, vxml.text, vert)
+            return
+        
+        if vfn.endswith('.txt'):
+            self.add_txt_link_to_vert(vfn, vxml.text, vert)
             return
 
         # process html file
